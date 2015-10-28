@@ -12,14 +12,35 @@
 		<div class="nojs">Javascript is either disabled or not supported in your browser. Please enable it or use a Javascript enabled browser.</div>
 	</noscript>
 
+	<div id="form">
+	    <input type="text" ng-model="search" ng-change="change()" placeholder="Enter your search term"  class="form-control"/>
+	
+		<div class="form-group">
+			<label for="selection">Results</label>
+			<select ng-model="selectedItem" id="selection" class="form-control">
+				<option ng-repeat="item in items" value="{{item}}">{{item}}</option>
+			</select>
+		</div>
+
 	<div>
-	  <input type="text" ng-model="search" ng-change="change()" placeholder="Enter your search term"  class="form-control"/>
-	  <ul>
-		  <li ng-repeat="x in results.data.children">
-			{{ x }}
-		  </li>
-	  </ul>
-	</div> 
+		<table class="table table-hover table-responsive">
+		<thead><tr><th>Title</th><th>Ups</th><th>Downs</th><th>Date</th><th>SubReddit</th><th>Comments</th><th>Visit</th></tr></thead>
+		<tbody>
+			<tr ng-repeat="x in results.data.children">
+			
+				<td>{{x.data.title}}</td>
+				<td>{{x.data.ups}}</td>
+				<td>{{x.data.downs}}</td>
+				<td>{{x.data.created_utc}}</td>
+				<td>{{x.data.subreddit}}</td>
+				<td>{{x.data.num_comments}}</td>
+				<td>{{x.data.permalink}}</td>
+				
+			</tr>
+		<tbody>
+		</table>
+	</div>
+	
 	</body>
 	
 </html>
