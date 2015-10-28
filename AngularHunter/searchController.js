@@ -1,7 +1,5 @@
 'use strict';
 
-/* https://github.com/sitepoint-editors/fastr */
-
 angular.module('searchApp', [])
   .controller('searchController', function($scope, $http){
     var pendingTask;
@@ -19,8 +17,6 @@ angular.module('searchApp', [])
     };
 
     function fetch(){
-      /*$http.get("http://www.omdbapi.com/?t=" + $scope.search + "&tomatoes=true&plot=full")
-       .success(function(response){ $scope.details = response; });*/
 	   
 	   $http.get("http://www.reddit.com/r/entrepreneur/search.json?q=" + $scope.search + "&limit=2")
        .success(function(response){ $scope.results = response; });
